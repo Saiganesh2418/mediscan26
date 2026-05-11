@@ -10,6 +10,7 @@ import logo from "@/assets/logo.png";
 // Password must be 8+ chars and contain a letter, a number, and the @ symbol
 const PASSWORD_RULE = /^(?=.*[A-Za-z])(?=.*\d)(?=.*@).{8,}$/;
 const PASSWORD_HINT = "Min 8 characters with a letter, number and @ symbol";
+const AUTHENTICATED_HOME = "/dashboard";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    if (!authLoading && session) navigate("/", { replace: true });
+    if (!authLoading && session) navigate(AUTHENTICATED_HOME, { replace: true });
   }, [session, authLoading, navigate]);
 
   const handleEmailAuth = async (e: React.FormEvent) => {
@@ -46,7 +47,7 @@ const Login = () => {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/`,
+            emailRedirectTo: `${window.location.origin}${AUTHENTICATED_HOME}`,
             data: { full_name: name || email.split("@")[0] },
           },
         });
@@ -55,7 +56,7 @@ const Login = () => {
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate("/", { replace: true });
+        navigate(AUTHENTICATED_HOME, { replace: true });
       }
     } catch (err: any) {
       toast({
@@ -73,7 +74,7 @@ const Login = () => {
     setBusy(true);
     try {
       const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
+        redirect_uri: `${window.location.origin}${AUTHENTICATED_HOME}`,
         extraParams: { prompt: "select_account" },
       });
       if (result.error) {
@@ -82,7 +83,7 @@ const Login = () => {
         return;
       }
       if (result.redirected) return;
-      navigate("/", { replace: true });
+      navigate(AUTHENTICATED_HOME, { replace: true });
     } catch (err: any) {
       toast({ title: "Google sign-in failed", description: err?.message, variant: "destructive" });
       setBusy(false);
