@@ -75,7 +75,7 @@ const Login = () => {
     setBusy(true);
     try {
       const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: `${window.location.origin}${AUTHENTICATED_HOME}`,
+        redirect_uri: `${PRODUCTION_URL}${AUTHENTICATED_HOME}`,
         extraParams: { prompt: "select_account" },
       });
       if (result.error) {
