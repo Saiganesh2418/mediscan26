@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Mail, Lock, Sparkles, Eye, EyeOff } from "lucide-react";
@@ -71,20 +72,17 @@ const Login = () => {
     if (busy) return;
     setBusy(true);
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-          redirectTo: `${window.location.origin}/`,
-          queryParams: {
-            prompt: "select_account",
-          },
-        },
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+        extraParams: { prompt: "select_account" },
       });
-      if (error) {
-        toast({ title: "Google sign-in failed", description: error.message, variant: "destructive" });
+      if (result.error) {
+        toast({ title: "Google sign-in failed", description: (result.error as Error).message, variant: "destructive" });
         setBusy(false);
         return;
       }
+      if (result.redirected) return;
+      navigate("/", { replace: true });
     } catch (err: any) {
       toast({ title: "Google sign-in failed", description: err?.message, variant: "destructive" });
       setBusy(false);
