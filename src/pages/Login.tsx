@@ -11,6 +11,7 @@ import logo from "@/assets/logo.png";
 const PASSWORD_RULE = /^(?=.*[A-Za-z])(?=.*\d)(?=.*@).{8,}$/;
 const PASSWORD_HINT = "Min 8 characters with a letter, number and @ symbol";
 const AUTHENTICATED_HOME = "/dashboard";
+const PRODUCTION_URL = "https://mediscan26.vercel.app";
 
 const Login = () => {
   const navigate = useNavigate();
