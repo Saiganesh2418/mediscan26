@@ -11,6 +11,7 @@ import logo from "@/assets/logo.png";
 const PASSWORD_RULE = /^(?=.*[A-Za-z])(?=.*\d)(?=.*@).{8,}$/;
 const PASSWORD_HINT = "Min 8 characters with a letter, number and @ symbol";
 const AUTHENTICATED_HOME = "/dashboard";
+const PRODUCTION_URL = "https://mediscan26.vercel.app";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ const Login = () => {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}${AUTHENTICATED_HOME}`,
+            emailRedirectTo: `${PRODUCTION_URL}${AUTHENTICATED_HOME}`,
             data: { full_name: name || email.split("@")[0] },
           },
         });
@@ -74,7 +75,7 @@ const Login = () => {
     setBusy(true);
     try {
       const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: `${window.location.origin}${AUTHENTICATED_HOME}`,
+        redirect_uri: `${PRODUCTION_URL}${AUTHENTICATED_HOME}`,
         extraParams: { prompt: "select_account" },
       });
       if (result.error) {
