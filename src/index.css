@@ -1,0 +1,431 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+
+/* MediScan — Liquid Glass Design System (Apple VisionOS / iOS inspired)
+   Blue palette: Primary #3B82F6 */
+
+@layer base {
+  :root {
+    /* Primary blue gradient (#60A5FA → #3B82F6 → #1D4ED8) */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 214 100% 96%;
+    --primary-muted: 217 60% 65%;
+    --primary-glow: 213 94% 68%;
+    --primary-deep: 224 76% 48%;
+
+    /* Soft blue-tinted background (#EAF2FF → #FFFFFF) */
+    --background: 214 100% 98%;
+    --background-gradient-start: 0 0% 100%;
+    --background-gradient-mid: 214 100% 96%;
+    --background-gradient-end: 217 95% 92%;
+    --foreground: 222 47% 11%;
+
+    /* Glass surfaces */
+    --glass: 0 0% 100%;
+    --glass-foreground: 222 47% 11%;
+    --glass-border: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --card-shadow: 217 91% 60%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --secondary: 214 100% 96%;
+    --secondary-foreground: 222 47% 20%;
+
+    --muted: 214 60% 95%;
+    --muted-foreground: 215 20% 45%;
+
+    --accent: 213 94% 68%;
+    --accent-foreground: 224 76% 20%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 20%;
+    --warning-light: 38 92% 95%;
+
+    --danger: 0 84% 60%;
+    --danger-foreground: 0 0% 100%;
+    --danger-light: 0 84% 96%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 71% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 60% 88%;
+    --input: 214 60% 88%;
+    --ring: 217 91% 60%;
+
+    --radius: 1.5rem;
+
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(213 94% 68%) 0%, hsl(217 91% 60%) 50%, hsl(224 76% 48%) 100%);
+    --gradient-primary-soft: linear-gradient(135deg, hsl(213 94% 75%) 0%, hsl(217 91% 65%) 100%);
+    --gradient-bg: linear-gradient(180deg, hsl(214 100% 96%) 0%, hsl(0 0% 100%) 60%, hsl(214 100% 97%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.7) 0%, hsla(214, 100%, 96%, 0.4) 100%);
+
+    /* Shadows — premium liquid glass (soft outer + inner highlight) */
+    --shadow-glass: 0 8px 30px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    --shadow-glass-lg: 0 18px 50px rgba(15, 23, 42, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.55);
+    --shadow-glow: 0 10px 30px rgba(59, 130, 246, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    --shadow-float: 0 24px 60px -12px rgba(59, 130, 246, 0.28), 0 8px 30px rgba(0, 0, 0, 0.08);
+    --shadow-soft: 0 4px 18px rgba(15, 23, 42, 0.06);
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --background-gradient-start: 222 47% 8%;
+    --background-gradient-mid: 222 47% 6%;
+    --background-gradient-end: 222 47% 4%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 213 94% 68%;
+    --accent-foreground: 210 40% 98%;
+
+    --border: 217 32% 22%;
+    --input: 217 32% 22%;
+
+    --gradient-bg: linear-gradient(180deg, hsl(222 47% 8%) 0%, hsl(222 47% 5%) 60%, hsl(222 47% 7%) 100%);
+  }
+
+  .dark .glass {
+    background: linear-gradient(135deg, hsla(217, 32%, 25%, 0.55) 0%, hsla(222, 47%, 15%, 0.35) 100%);
+    border: 1px solid hsla(255, 255%, 255%, 0.08);
+  }
+
+  .dark .glass-strong {
+    background: linear-gradient(135deg, hsla(217, 32%, 25%, 0.7) 0%, hsla(222, 47%, 15%, 0.5) 100%);
+    border: 1px solid hsla(0, 0%, 100%, 0.1);
+  }
+
+  .dark .glass-subtle {
+    background: hsla(217, 32%, 22%, 0.45);
+    border: 1px solid hsla(0, 0%, 100%, 0.06);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply text-foreground antialiased;
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Ambient floating blue orbs */
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::before {
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, hsla(213, 94%, 75%, 0.55), transparent 70%);
+    top: -180px;
+    right: -160px;
+    animation: float-orb 22s ease-in-out infinite;
+  }
+
+  body::after {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, hsla(217, 91%, 65%, 0.4), transparent 70%);
+    bottom: -120px;
+    left: -120px;
+    animation: float-orb 28s ease-in-out infinite reverse;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  /* Liquid glass surfaces — exact spec */
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    border-radius: 20px;
+    transition: transform 250ms ease, box-shadow 250ms ease;
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.55);
+    border-radius: 24px;
+    transition: transform 250ms ease, box-shadow 250ms ease;
+  }
+
+  .glass-subtle {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    border-radius: 16px;
+  }
+
+  .glass-tinted {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.22) 0%, rgba(59, 130, 246, 0.14) 100%);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    border-radius: 22px;
+  }
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  }
+
+  /* Universal hover/tap micro-interactions for interactive glass surfaces */
+  .glass-interactive {
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+  .glass-interactive:hover {
+    transform: scale(1.02);
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.55);
+  }
+  .glass-interactive:active {
+    transform: scale(0.97);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-primary-soft {
+    background: var(--gradient-primary-soft);
+  }
+
+  /* Legacy alias to avoid breaking imports */
+  .gradient-teal {
+    background: var(--gradient-primary);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-glass { box-shadow: var(--shadow-glass); }
+  .shadow-glass-lg { box-shadow: var(--shadow-glass-lg); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-float { box-shadow: var(--shadow-float); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-card { box-shadow: var(--shadow-glass); }
+  .shadow-card-hover { box-shadow: var(--shadow-glass-lg); }
+
+  /* Glossy button highlight */
+  .glossy::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0.35) 0%, hsla(0, 0%, 100%, 0) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Shimmer sweep on hover */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, hsla(0, 0%, 100%, 0.4) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.8s ease;
+    pointer-events: none;
+  }
+  .shimmer:hover::after {
+    transform: translateX(100%);
+  }
+
+  /* Scan line for hero illustration */
+  .scan-beam {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(213 94% 68%), transparent);
+    box-shadow: 0 0 12px hsl(213 94% 68%), 0 0 24px hsl(217 91% 60%);
+    animation: scan-beam 2.5s ease-in-out infinite;
+  }
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.05); }
+  66% { transform: translate(-30px, 40px) scale(0.95); }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes scan-beam {
+  0%, 100% { top: 30%; opacity: 0.6; }
+  50% { top: 70%; opacity: 1; }
+}
+
+@keyframes scan-sweep {
+  0% { top: 8%; opacity: 0.4; }
+  50% { top: 50%; opacity: 1; }
+  100% { top: 92%; opacity: 0.4; }
+}
+
+.animate-scan-sweep {
+  animation: scan-sweep 2.4s ease-in-out infinite;
+}
+
+/* Hide scrollbars on horizontal pill rows */
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { scrollbar-width: none; }
+
+/* Dark immersive mode (Scan screen) — hide ambient orbs + tint body */
+body.scan-dark-mode { background: #0a0e1a; }
+body.scan-dark-mode::before,
+body.scan-dark-mode::after { display: none; }
+
+/* ---------------- Page transitions (fade only — no flicker) ---------------- */
+@keyframes page-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+.page-transition {
+  animation: page-in 220ms ease-out both;
+  will-change: opacity;
+}
+
+/* ---------------- Liquid-glass scan frame (single rounded rectangle) ---------------- */
+.scan-frame-glass {
+  position: relative;
+  border-radius: 32px;
+  border: 1.5px solid rgba(96, 165, 250, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.10) inset,
+    0 0 22px rgba(96, 165, 250, 0.45),
+    0 0 60px rgba(59, 130, 246, 0.25);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(96, 165, 250, 0.04) 100%
+  );
+  animation: scan-frame-pulse 2.6s ease-in-out infinite;
+}
+@keyframes scan-frame-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.10) inset,
+      0 0 22px rgba(96,165,250,0.45),
+      0 0 60px rgba(59,130,246,0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.18) inset,
+      0 0 32px rgba(96,165,250,0.7),
+      0 0 90px rgba(59,130,246,0.4);
+  }
+}
+
+/* Liquid glass toast variant (used by Sonner) */
+.toast-liquid-glass {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(30px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow:
+    0 18px 50px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+  border-radius: 22px !important;
+  color: hsl(222 47% 11%) !important;
+}
+.dark .toast-liquid-glass {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: hsl(210 40% 98%) !important;
+}
+
+/* ---------------- Medicine Result frosted readability ---------------- */
+/* When MedicineResult is rendered, its glass cards must stay highly readable
+   (matches Upload Image result spec: rgba(255,255,255,0.85-0.95) + blur). */
+.medicine-result-screen .glass,
+.medicine-result-screen .glass-strong,
+.medicine-result-screen .glass-subtle {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(18px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+}
+.dark .medicine-result-screen .glass,
+.dark .medicine-result-screen .glass-strong,
+.dark .medicine-result-screen .glass-subtle {
+  background: rgba(15, 23, 42, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.10) !important;
+}
