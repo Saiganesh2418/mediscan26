@@ -48,7 +48,7 @@ const Login = () => {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}${AUTHENTICATED_HOME}`,
+            emailRedirectTo: `${PRODUCTION_URL}${AUTHENTICATED_HOME}`,
             data: { full_name: name || email.split("@")[0] },
           },
         });
