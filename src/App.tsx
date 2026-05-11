@@ -7,6 +7,7 @@ import AppLayout from "./components/AppLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import StoreBinder from "./components/StoreBinder";
+import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Scan from "./pages/Scan";
 import Receipts from "./pages/Receipts";
@@ -56,6 +57,7 @@ const App = () => (
               }
             >
               <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/scan" element={<Scan />} />
               <Route path="/receipts" element={<Receipts />} />
               <Route path="/receipts/scan" element={<ReceiptScan />} />
